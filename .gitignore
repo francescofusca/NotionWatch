@@ -1,0 +1,35 @@
+# Xcode
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+*.xcuserdata/
+DerivedData/
+Build/
+*.[oa]
+*.app
+*.ipa
+
+# Swift Package Manager
+.build/
+Packages/
+*.resolved
+
+# macOS
+.DS_Store
+*~.nib
+*.swp
+
+# Cocoapods (se lo hai usato in passato)
+Pods/
+
+# Carthage (se lo hai usato in passato)
+Carthage/
+
+# File di configurazione specifici (se ne hai)
+# Es: GoogleService-Info.plist # COMMENTA QUESTA RIGA SE VUOI INCLUDERLO
+                              # MA è MEGLIO NON INCLUDERE FILE CON CHIAVI API
+# Es: .env # MAI INCLUDERE FILE .env CON SEGRETI!
+
+# Altri file temporanei
+*.log
+*.temp
+*.tmp

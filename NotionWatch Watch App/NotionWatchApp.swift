@@ -1,17 +1,49 @@
-//
-//  NotionWatchApp.swift
-//  NotionWatch Watch App
-//
-//  Created by FF9 on 04/03/25.
-//
-
 import SwiftUI
+import AVFoundation
+import Firebase
 
 @main
-struct NotionWatch_Watch_AppApp: App {
+struct NotionWatchNewApp: App { // Usa il nome del NUOVO progetto
+    @State private var authService: AuthService?
+    @State private var showSignUp = false
+
+    init() {
+        requestMicrophonePermission()
+        FirebaseApp.configure()
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if let authService = authService {
+                if authService.isLoggedIn {
+                    ContentView(authViewModel: AuthViewModel(authService: authService))
+                } else {
+                    VStack {
+                        if showSignUp {
+                            SignUpView(viewModel: AuthViewModel(authService: authService), showSignUp: $showSignUp)
+                        } else {
+                            LoginView(viewModel: AuthViewModel(authService: authService), showSignUp: $showSignUp)
+                        }
+                    }
+                }
+            } else {
+                ProgressView()
+                    .onAppear {
+                        self.authService = AuthService()
+                    }
+            }
+        }
+    }
+
+     func requestMicrophonePermission() {
+        AVAudioApplication.requestRecordPermission { granted in
+            DispatchQueue.main.async {
+                if granted {
+                    print("DEBUG: Permesso microfono garantito")
+                } else {
+                    print("DEBUG: Permesso microfono negato")
+                }
+            }
         }
     }
 }
