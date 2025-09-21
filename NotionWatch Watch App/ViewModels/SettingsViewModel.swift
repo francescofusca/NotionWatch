@@ -44,4 +44,45 @@ class SettingsViewModel: ObservableObject {
         alertMessage = message
         showingAlert = true
     }
+
+    func areAllCredentialsConfigured() -> Bool {
+        return !notionAPIKey.isEmpty &&
+               !notionDatabaseID.isEmpty &&
+               !cloudinaryAPIKey.isEmpty &&
+               !cloudinaryAPISecret.isEmpty &&
+               !cloudinaryCloudName.isEmpty
+    }
+
+    func exportCredentials() -> String {
+        let credentials = [
+            "notionAPIKey": notionAPIKey,
+            "notionDatabaseID": notionDatabaseID,
+            "cloudinaryAPIKey": cloudinaryAPIKey,
+            "cloudinaryAPISecret": cloudinaryAPISecret,
+            "cloudinaryCloudName": cloudinaryCloudName
+        ]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: credentials, options: []),
+              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            return ""
+        }
+        return jsonString
+    }
+
+    func importCredentials(from jsonString: String) -> Bool {
+        guard let jsonData = jsonString.data(using: .utf8),
+              let credentials = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: String] else {
+            showAlert(message: "Invalid credentials format")
+            return false
+        }
+
+        if let notionAPI = credentials["notionAPIKey"] { notionAPIKey = notionAPI }
+        if let notionDB = credentials["notionDatabaseID"] { notionDatabaseID = notionDB }
+        if let cloudinaryAPI = credentials["cloudinaryAPIKey"] { cloudinaryAPIKey = cloudinaryAPI }
+        if let cloudinarySecret = credentials["cloudinaryAPISecret"] { cloudinaryAPISecret = cloudinarySecret }
+        if let cloudinaryCloud = credentials["cloudinaryCloudName"] { cloudinaryCloudName = cloudinaryCloud }
+
+        showAlert(message: "Credentials imported successfully")
+        return true
+    }
 }

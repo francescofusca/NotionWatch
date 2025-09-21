@@ -1,84 +1,154 @@
 //  NotionWatch/ContentView.swift
 
 import SwiftUI
+import WatchKit
 
 struct ContentView: View {
     @ObservedObject var audioViewModel = AudioRecorderViewModel()
     @ObservedObject var authViewModel = AuthViewModel()
+    @StateObject private var settingsViewModel = SettingsViewModel()
     @State private var showingSettings = false
-    @State private var showingPrivacyPolicy = false // Aggiungi
-    @State private var showingHelp = false // Aggiungi
+    @State private var showingPrivacyPolicy = false
+    @State private var showingHelp = false
+    @State private var lastInteraction = Date()
 
 
     var body: some View {
-        NavigationView{
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Titolo
-                    Text("Notion Watch")
-                        .font(.title)
-                        .padding(.top)
+        NavigationView {
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack(spacing: 16) {
+                        // Header con gradiente
+                        VStack(spacing: 8) {
+                            Text("👁️")
+                                .font(.system(size: 32))
+                                .scaleEffect(audioViewModel.isRecording ? 1.2 : 1.0)
+                                .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true), value: audioViewModel.isRecording)
 
-                    // Stato della registrazione
-                    if audioViewModel.isRecording {
-                        recordingView
-                    } else {
-                        idleView
-                    }
-
-                    // Stato della riproduzione
-                    if audioViewModel.isPlaying {
-                        playbackView
-                    }
-
-                    // Trascrizione (mostrata solo dopo l'inserimento del testo)
-                    if let transcription = audioViewModel.transcribedText, !audioViewModel.isRecording, !audioViewModel.isPlaying {
-                        Text("Trascrizione:")
-                            .font(.headline)
-                        Text(transcription)
-                            .font(.body)
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                    }
-
-                    // Pulsanti (condizionali)
-                    if !audioViewModel.isRecording && !audioViewModel.isPlaying && audioViewModel.hasCurrentRecording && audioViewModel.transcribedText != nil  {
-                        saveDeleteButtons
-                    }
-
-                    // Indicatore di caricamento
-                    if audioViewModel.isUploading {
-                        ProgressView(value: audioViewModel.uploadProgress)
-                            .progressViewStyle(CircularProgressViewStyle())
-                        Text("Invio in corso...")
-                    }
-
-
-                    //Bottoni per accedere alle varie schermate
-                    HStack{
-                        Button {
-                            showingSettings.toggle()
-                        } label: {
-                            Text("Impostazioni")
+                            Text("Notion Watch")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.white)
                         }
-                        Button {
-                            showingPrivacyPolicy.toggle()
-                        } label: {
-                            Text("Privacy")
-                        }
-                        Button {
-                            showingHelp.toggle()
-                        } label: {
-                            Text("Aiuto")
+                        .padding(.top, 8)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(.ultraThinMaterial)
+                                .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+                        )
+
+                        // Main content area
+                        VStack(spacing: 20) {
+                            // Stato della registrazione
+                            if audioViewModel.isRecording {
+                                createRecordingView(audioViewModel: audioViewModel)
+                                    .transition(.asymmetric(
+                                        insertion: .scale.combined(with: .opacity),
+                                        removal: .scale.combined(with: .opacity)
+                                    ))
+                            } else {
+                                createIdleView(
+                                    settingsViewModel: settingsViewModel,
+                                    audioViewModel: audioViewModel,
+                                    onShowSettings: { showingSettings = true },
+                                    onHaptic: { hapticFeedback() },
+                                    onUpdateInteraction: { lastInteraction = Date() }
+                                )
+                                    .transition(.asymmetric(
+                                        insertion: .scale.combined(with: .opacity),
+                                        removal: .scale.combined(with: .opacity)
+                                    ))
+                            }
+
+                            // Stato della riproduzione
+                            if audioViewModel.isPlaying {
+                                createPlaybackView(audioViewModel: audioViewModel)
+                                    .transition(.slide.combined(with: .opacity))
+                            }
                         }
 
+                        // Trascrizione con design migliorato
+                        if let transcription = audioViewModel.transcribedText, !audioViewModel.isRecording, !audioViewModel.isPlaying {
+                            VStack(alignment: .leading, spacing: 8) {
+                                Label("Descrizione", systemImage: "text.quote")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.secondary)
+
+                                Text(transcription)
+                                    .font(.body)
+                                    .multilineTextAlignment(.leading)
+                                    .padding(12)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(.regularMaterial)
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 12)
+                                                    .stroke(.tertiary, lineWidth: 1)
+                                            )
+                                    )
+                            }
+                            .padding(.horizontal, 4)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+
+                        // Action buttons con design migliorato
+                        if !audioViewModel.isRecording && !audioViewModel.isPlaying && audioViewModel.hasCurrentRecording && audioViewModel.transcribedText != nil {
+                            createSaveDeleteButtons(audioViewModel: audioViewModel, onHaptic: {})
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+
+                        // Indicatore di caricamento migliorato
+                        if audioViewModel.isUploading {
+                            VStack(spacing: 12) {
+                                ProgressView(value: audioViewModel.uploadProgress)
+                                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                                    .scaleEffect(1.2)
+
+                                Text("Invio in corso...")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(.regularMaterial)
+                            )
+                            .transition(.scale.combined(with: .opacity))
+                        }
+
+                        Spacer(minLength: 8)
+
+                        // Bottom navigation migliorata
+                        HStack(spacing: 20) {
+                            navigationButton(
+                                icon: "gearshape.fill",
+                                title: "Settings",
+                                action: { showingSettings.toggle() }
+                            )
+
+                            navigationButton(
+                                icon: "hand.raised.fill",
+                                title: "Privacy",
+                                action: { showingPrivacyPolicy.toggle() }
+                            )
+
+                            navigationButton(
+                                icon: "questionmark.circle.fill",
+                                title: "Help",
+                                action: { showingHelp.toggle() }
+                            )
+                        }
+                        .padding(.bottom, 8)
                     }
-
-
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
                 }
-                .padding()
+                .frame(minHeight: geometry.size.height)
+            }
                 .alert(isPresented: $audioViewModel.showingAlert) {
                     Alert(
                         title: Text("Avviso"),
@@ -89,116 +159,376 @@ struct ContentView: View {
 
 
             }
-            .sheet(isPresented: $showingSettings) { // Impostazioni
-                SettingsView(viewModel: SettingsViewModel(), authViewModel: authViewModel)
+            .sheet(isPresented: $showingSettings) {
+                SettingsView(viewModel: settingsViewModel, authViewModel: authViewModel)
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.visible)
             }
-            .sheet(isPresented: $showingPrivacyPolicy) { // Informativa sulla privacy
+            .sheet(isPresented: $showingPrivacyPolicy) {
                 PrivacyPolicyView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.visible)
             }
-            .sheet(isPresented: $showingHelp) { // Guida
+            .sheet(isPresented: $showingHelp) {
                 NotionCredentialsHelpView()
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.visible)
             }
         }
 
     }
 
-    // Viste private per organizzare il codice
+    // MARK: - Navigation Button Helper
     @ViewBuilder
-       private var idleView: some View {
-              Button(action: {
-                  audioViewModel.startRecording()
-              }) {
-                  Image(systemName: "mic.circle.fill")
-                      .resizable()
-                      .scaledToFit()
-                      .frame(width: 80, height: 80)
-                      .foregroundColor(.red)
-              }
-              .buttonStyle(PlainButtonStyle())
-              Text("Tocca per registrare")
-          }
+    private func navigationButton(icon: String, title: String, action: @escaping () -> Void) -> some View {
+        Button(action: {
+            action()
+        }) {
+            VStack(spacing: 4) {
+                Image(systemName: icon)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.blue)
 
-          @ViewBuilder
-          private var recordingView: some View {
-              VStack {
-                  Image(systemName: "record.circle.fill")
-                      .resizable()
-                      .scaledToFit()
-                      .frame(width: 80, height: 80)
-                      .foregroundColor(.red)
-                  Text("\(formattedDuration(audioViewModel.recordingDuration))")
-                      .font(.headline)
-                  Button("Ferma") {
-                      audioViewModel.stopRecording()
-                      // Chiamiamo presentTextInputController *QUI*
-                      presentTextInputController()
+                Text(title)
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.primary)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.ultraThinMaterial)
+                    .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+            )
+        }
+        .buttonStyle(.plain)
+    }
 
-                  }
-              }
-          }
+    // MARK: - View Components
+    @ViewBuilder
+    private func createIdleView(
+        settingsViewModel: SettingsViewModel,
+        audioViewModel: AudioRecorderViewModel,
+        onShowSettings: @escaping () -> Void,
+        onHaptic: @escaping () -> Void,
+        onUpdateInteraction: @escaping () -> Void
+    ) -> some View {
+        VStack(spacing: 16) {
+            Button(action: {
+                onHaptic()
+                if settingsViewModel.areAllCredentialsConfigured() {
+                    audioViewModel.startRecording()
+                } else {
+                    onShowSettings()
+                }
+            }) {
+                ZStack {
+                    Circle()
+                        .fill(
+                            settingsViewModel.areAllCredentialsConfigured() ?
+                            LinearGradient(colors: [.red.opacity(0.8), .red], startPoint: .top, endPoint: .bottom) :
+                            LinearGradient(colors: [.gray.opacity(0.6), .gray], startPoint: .top, endPoint: .bottom)
+                        )
+                        .frame(width: 90, height: 90)
+                        .shadow(color: settingsViewModel.areAllCredentialsConfigured() ? .red.opacity(0.3) : .clear, radius: 8, x: 0, y: 4)
+
+                    Image(systemName: "mic.fill")
+                        .font(.system(size: 36, weight: .medium))
+                        .foregroundColor(.white)
+                        .scaleEffect(1.0)
+                        .animation(.easeInOut(duration: 0.2), value: 1.0)
+                }
+            }
+            .buttonStyle(.plain)
+            .simultaneousGesture(
+                TapGesture().onEnded {
+                    onUpdateInteraction()
+                }
+            )
+
+            VStack(spacing: 4) {
+                Text(settingsViewModel.areAllCredentialsConfigured() ? "Tocca per registrare" : "Configura credenziali")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(settingsViewModel.areAllCredentialsConfigured() ? .primary : .secondary)
+                    .multilineTextAlignment(.center)
+
+                if !settingsViewModel.areAllCredentialsConfigured() {
+                    Text("Vai in Impostazioni")
+                        .font(.caption2)
+                        .foregroundColor(.blue)
+                }
+            }
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.regularMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.tertiary, lineWidth: 1)
+                )
+        )
+    }
 
     @ViewBuilder
-     private var playbackView: some View{
-         VStack{
-             Image(systemName: "play.circle.fill")
-                 .resizable()
-                 .scaledToFit()
-                 .frame(width: 80, height: 80)
-                 .foregroundColor(.green)
-             Text("\(formattedDuration(audioViewModel.playbackTime)) / \(formattedDuration(audioViewModel.recordingDuration))")
-             Slider(value: $audioViewModel.playbackTime, in: 0...audioViewModel.recordingDuration)
-             .disabled(audioViewModel.isRecording)
-             HStack{
-                 Button {
-                     audioViewModel.stopPlayback()
-                 } label: {
-                    Text("Stop") //Uso il testo per watchOs
-                 }
-                 .buttonStyle(.borderedProminent)
+    private func createRecordingView(audioViewModel: AudioRecorderViewModel) -> some View {
+        VStack(spacing: 20) {
+            // Recording indicator con animazione
+            ZStack {
+                Circle()
+                    .fill(
+                        audioViewModel.isPaused ?
+                        LinearGradient(colors: [.orange.opacity(0.8), .orange], startPoint: .top, endPoint: .bottom) :
+                        LinearGradient(colors: [.red.opacity(0.8), .red], startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(width: 90, height: 90)
+                    .scaleEffect(audioViewModel.isPaused ? 1.0 : 1.05)
+                    .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: audioViewModel.isPaused)
+                    .shadow(color: audioViewModel.isPaused ? .orange.opacity(0.3) : .red.opacity(0.3), radius: 12, x: 0, y: 6)
 
-             }
-         }
-     }
+                Image(systemName: audioViewModel.isPaused ? "pause.fill" : "waveform")
+                    .font(.system(size: 32, weight: .medium))
+                    .foregroundColor(.white)
+            }
 
-       @ViewBuilder
-       private var saveDeleteButtons: some View {
-           HStack(spacing: 20) {
-               Button(action: {
-                   audioViewModel.saveRecording()
-               }) {
-                   Image(systemName: "square.and.arrow.down.fill")
-                       .foregroundColor(.green)
-               }
+            // Timer con design migliorato
+            VStack(spacing: 4) {
+                Text("\(formattedDuration(audioViewModel.recordingDuration))")
+                    .font(.system(size: 24, weight: .bold, design: .monospaced))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.primary, .secondary],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
 
-               Button(action: {
-                   audioViewModel.deleteRecording()
-               }) {
-                   Image(systemName: "trash.fill")
-                       .foregroundColor(.red)
-               }
-           }
-       }
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
+            .background(
+                Capsule()
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        Capsule()
+                            .stroke(.tertiary, lineWidth: 1)
+                    )
+            )
+
+            // Control buttons
+            HStack(spacing: 24) {
+                controlButton(
+                    icon: audioViewModel.isPaused ? "play.fill" : "pause.fill",
+                    title: audioViewModel.isPaused ? "Riprendi" : "Pausa",
+                    color: audioViewModel.isPaused ? .green : .orange,
+                    action: {
+                        hapticFeedback()
+                        if audioViewModel.isPaused {
+                            audioViewModel.resumeRecording()
+                        } else {
+                            audioViewModel.pauseRecording()
+                        }
+                    }
+                )
+
+                controlButton(
+                    icon: "stop.fill",
+                    title: "Stop",
+                    color: .red,
+                    action: {
+                        hapticFeedback()
+                        audioViewModel.stopRecording()
+                        WKExtension.shared()
+                            .visibleInterfaceController?
+                            .presentTextInputController(
+                                withSuggestions: ["Appunto importante", "Memo", "Nota vocale", "Promemoria"],
+                                allowedInputMode: .plain
+                            ) { result in
+                                guard let result = result as? [String], let text = result.first, !text.isEmpty else {
+                                    return
+                                }
+                                audioViewModel.processTranscription(text: text)
+                            }
+                    }
+                )
+            }
+        }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.regularMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.tertiary, lineWidth: 1)
+                )
+        )
+    }
+
+    @ViewBuilder
+    private func createPlaybackView(audioViewModel: AudioRecorderViewModel) -> some View {
+        VStack(spacing: 16) {
+            // Playback indicator
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(colors: [.green.opacity(0.8), .green], startPoint: .top, endPoint: .bottom)
+                    )
+                    .frame(width: 80, height: 80)
+                    .shadow(color: .green.opacity(0.3), radius: 8, x: 0, y: 4)
+
+                Image(systemName: "play.fill")
+                    .font(.system(size: 28, weight: .medium))
+                    .foregroundColor(.white)
+            }
+
+            // Progress and time
+            VStack(spacing: 8) {
+                Text("\(formattedDuration(audioViewModel.playbackTime)) / \(formattedDuration(audioViewModel.recordingDuration))")
+                    .font(.system(size: 16, weight: .semibold, design: .monospaced))
+                    .foregroundColor(.primary)
+
+                // Custom progress bar
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(.tertiary)
+                        .frame(height: 6)
+
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(
+                            LinearGradient(colors: [.green, .green.opacity(0.7)], startPoint: .leading, endPoint: .trailing)
+                        )
+                        .frame(width: (audioViewModel.recordingDuration > 0 ? CGFloat(audioViewModel.playbackTime / audioViewModel.recordingDuration) : 0) * 140, height: 6)
+                        .animation(.linear(duration: 0.1), value: audioViewModel.playbackTime)
+                }
+                .frame(width: 140)
+                .onTapGesture { location in
+                    let progress = location.x / 140
+                    audioViewModel.playbackTime = progress * audioViewModel.recordingDuration
+                }
+            }
+
+            // Stop button
+            controlButton(
+                icon: "stop.fill",
+                title: "Stop",
+                color: .red,
+                action: {
+                    hapticFeedback()
+                    audioViewModel.stopPlayback()
+                }
+            )
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.regularMaterial)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(.tertiary, lineWidth: 1)
+                )
+        )
+    }
+
+    @ViewBuilder
+    private func createSaveDeleteButtons(audioViewModel: AudioRecorderViewModel, onHaptic: @escaping () -> Void) -> some View {
+        HStack(spacing: 12) {
+            actionButton(
+                icon: "play.fill",
+                title: "Ascolta",
+                color: .blue,
+                action: {
+                    onHaptic()
+                    audioViewModel.startPlayback()
+                }
+            )
+
+            actionButton(
+                icon: "paperplane.fill",
+                title: "Invia",
+                color: .green,
+                action: {
+                    hapticFeedback()
+                    audioViewModel.saveRecording()
+                }
+            )
+
+            actionButton(
+                icon: "trash.fill",
+                title: "Elimina",
+                color: .red,
+                action: {
+                    onHaptic()
+                    audioViewModel.deleteRecording()
+                }
+            )
+        }
+        .padding(.horizontal, 8)
+    }
+
+    // MARK: - Button Helpers
+    @ViewBuilder
+    private func controlButton(icon: String, title: String, color: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(color)
+
+                Text(title)
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundColor(color)
+            }
+            .frame(width: 60, height: 60)
+            .background(
+                Circle()
+                    .fill(.ultraThinMaterial)
+                    .overlay(
+                        Circle()
+                            .stroke(color.opacity(0.3), lineWidth: 1)
+                    )
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    @ViewBuilder
+    private func actionButton(icon: String, title: String, color: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(
+                            LinearGradient(
+                                colors: [color.opacity(0.8), color],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .frame(width: 44, height: 44)
+                        .shadow(color: color.opacity(0.3), radius: 4, x: 0, y: 2)
+
+                    Image(systemName: icon)
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundColor(.white)
+                }
+
+                Text(title)
+                    .font(.caption2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+            }
+        }
+        .buttonStyle(.plain)
+    }
     private func formattedDuration(_ duration: TimeInterval) -> String {
            let minutes = Int(duration) / 60
            let seconds = Int(duration) % 60
            return String(format: "%02d:%02d", minutes, seconds)
        }
 
-    // Funzione per presentare il controller di input
-    func presentTextInputController() {
+    // MARK: - Helper Functions
+    private func hapticFeedback() {
+        WKInterfaceDevice.current().play(.click)
+    }
 
-        WKExtension.shared()
-            .visibleInterfaceController?
-            .presentTextInputController(withSuggestions: [], allowedInputMode: .plain) { result in
-                guard let result = result as? [String], let text = result.first else {
-
-                    return
-                }
-                audioViewModel.processTranscription(text: text)
-
-            }
-
-        }
-    func setupTextInput() {
-        }
-}

@@ -2,130 +2,105 @@
 import SwiftUI
 
 struct PrivacyPolicyView: View {
-    @Environment(\.presentationMode) var presentationMode // Per chiudere la view
+    @Environment(\.presentationMode) var presentationMode
 
-    //TODO: Sostituisci con la TUA informativa sulla privacy
+    // !!! IMPORTANTE: Rivedi e personalizza ulteriormente questo testo.
+    // !!! CONSULTA UN LEGALE per assicurarti della conformità. !!!
     let privacyPolicyText = """
-    Informativa sulla Privacy di NotionWatch
+    NotionWatch Privacy Policy
 
-    Ultimo aggiornamento: 18 maggio 2024
+    Last updated: April 19, 2025
 
-    1. Introduzione
+    **1. Introduction**
 
-    NotionWatch è un'applicazione per Apple Watch sviluppata da Francesco Fusca che ti permette di registrare note audio e salvarle direttamente nel tuo spazio di lavoro Notion. Questa Informativa sulla Privacy spiega quali dati personali raccogliamo, come li utilizziamo, con chi li condividiamo e quali sono i tuoi diritti in relazione ai tuoi dati.
+    NotionWatch is an Apple Watch application developed by Francesco Fusca (ff9). This app allows you to record audio notes and save them to your personal Notion account, also using the Cloudinary service for audio file storage. This Privacy Policy describes what data we collect, how we use it, and with whom we share it.
 
-    2. Dati Raccolti
+    **2. Data Collected**
 
-    NotionWatch raccoglie i seguenti dati personali:
+    To provide the app's functionality, NotionWatch requires and manages the following data:
 
-        *   **Informazioni di Autenticazione (Firebase):**
-            *   Indirizzo email: Utilizzato per creare e gestire il tuo account utente tramite Firebase Authentication.
-            *   Password: Utilizzata per proteggere il tuo account utente (memorizzata in forma crittografata da Firebase).
-            *   User ID: Un identificatore univoco generato da Firebase e associato al tuo account.
-        *   **Credenziali Notion:**
-            *   API Key di Notion: Un token segreto che permette all'app di accedere al tuo account Notion. Questa chiave viene fornita da te e memorizzata *localmente* sul tuo dispositivo tramite UserDefaults.
-            *   Database ID di Notion: Un identificatore univoco del database Notion in cui vuoi salvare le note audio. Questo ID viene fornito da te e memorizzato *localmente* sul tuo dispositivo tramite UserDefaults.
-        *   **Registrazioni Audio:**
-            *   File Audio: I file audio delle tue note vocali, registrati tramite l'app e memorizzati su Cloudinary.
-        * **Descrizioni testuali:**
-            *   Testo: Il testo che inserisci come descrizione delle note audio (dettato o digitato), inviato a Notion.
+    *   **Authentication Information (provided to Firebase):**
+        *   Email address: For creating and managing your NotionWatch account.
+        *   Password: For your account security (stored in encrypted form by Firebase).
+        *   User ID (Firebase): A unique identifier associated with your NotionWatch account.
+    *   **External Service Credentials (stored locally on your device):**
+        *   Notion API Key: Required to authorize the app to access your Notion account.
+        *   Notion Database ID: Identifies the specific database where your notes will be saved.
+        *   Cloudinary Cloud Name: Identifier for your Cloudinary account.
+        *   Cloudinary API Key: Key to authorize audio file uploads to your Cloudinary account.
+        *   Cloudinary API Secret: Secret associated with your Cloudinary API Key.
+        *   *Important:* These external credentials are stored *exclusively* on your device via UserDefaults and sent to our server *only* when necessary to perform requested operations (e.g., saving a note). They are not permanently stored on our servers.
+    *   **User Content:**
+        *   Audio Files: Audio recordings created with the app.
+        *   Text Descriptions: The text you enter as descriptions for your audio notes.
 
-        *   **Informazioni sul Dispositivo (NON RACCOLTE - Conferma):**
-          Allo stato attuale, l'applicazione NON raccoglie in modo automatico informazioni specifiche sul dispositivo, come il modello o la versione del sistema operativo, tranne le informazioni strettamente necessarie a Firebase Auth per funzionare.
+    **3. Data Usage**
 
-    3. Utilizzo dei Dati
+    We use the collected data *exclusively* for the following purposes:
 
-    Utilizziamo i dati raccolti *esclusivamente* per le seguenti finalità:
+    *   Providing the app's main functionality: audio recording, saving to Notion and Cloudinary.
+    *   Authenticating and managing your NotionWatch account.
+    *   Allowing the app to interact with your Notion and Cloudinary accounts *based on the credentials you provide*.
+    *   Sending app-related notifications (errors, confirmations).
+    *   Responding to support requests.
 
-        *   **Fornire il Servizio:**
-            *   Per permetterti di registrare note audio.
-            *   Per salvare le note audio (file audio e descrizione) nel tuo spazio di lavoro Notion, tramite l'uso della tua API Key e del Database ID.
-            *   Per autenticarti e gestire il tuo account utente tramite Firebase Authentication.
-        *   **Comunicazioni:**
-            *   Per inviarti notifiche relative all'app (es. conferma di salvataggio, errori, aggiornamenti importanti).
-            *   Per rispondere alle tue richieste di supporto (se ci contatti).
+    **4. Data Sharing and Third-Party Services**
 
-    4. Condivisione dei Dati
+    To function, NotionWatch relies on the following third-party services. We share your data with these services *only* when strictly necessary to provide the app's functionality:
 
-    Condividiamo i tuoi dati con i seguenti fornitori di servizi terzi, *esclusivamente* per le finalità indicate:
+    *   **Firebase (Google):** Used for secure authentication of your NotionWatch account. See Google's privacy policy: (https://policies.google.com/privacy)
+    *   **Cloudinary:** Used to store your audio files. When you save a note, the audio file is uploaded to *your* Cloudinary account (using the credentials you provide). See Cloudinary's privacy policy: (https://cloudinary.com/privacy)
+    *   **Notion:** Used to create new pages in the database you specify and save the text description and link to the audio file stored on Cloudinary. Access occurs through *your* API Key. See Notion's privacy policy: (https://www.notion.so/notion/Privacy-Policy-3468d120cf614d4c9014c09f6adc9091)
+    *   **NotionWatch Server (hosted on Render):** Our server acts as an intermediary to handle uploads to Cloudinary and interaction with the Notion API, using the credentials you provide. The server does not permanently store your Notion or Cloudinary credentials.
 
-        *   **Firebase (Google):**
-            *   Firebase Authentication: Per la gestione dell'autenticazione utente (email, password, user ID). I dati sono memorizzati sui server di Google (Firebase) negli Stati Uniti o in altre regioni in cui Google ha delle infrastrutture. Google agisce come responsabile del trattamento dei dati per nostro conto. Puoi consultare l'informativa sulla privacy di Google qui: [https://policies.google.com/privacy](https://policies.google.com/privacy)
-        *   **Cloudinary:**
-            *   Per l'hosting dei file audio. I file audio vengono caricati sui server di Cloudinary. Cloudinary agisce come responsabile del trattamento dei dati per nostro conto. Puoi consultare l'informativa sulla privacy di Cloudinary qui: [https://cloudinary.com/privacy](https://cloudinary.com/privacy)
-        *   **Notion:**
-            *   Per salvare le note audio (come URL di Cloudinary) e le descrizioni nel tuo spazio di lavoro Notion. Notion agisce come responsabile del trattamento dei dati per nostro conto. Puoi consultare l'informativa sulla privacy di Notion qui: [https://www.notion.so/privacy_policy](https://www.notion.so/privacy_policy)
+    We do *not* sell, rent, or share your personal data with third parties for marketing purposes.
 
-        *Non* vendiamo, affittiamo o condividiamo i tuoi dati personali con terze parti per scopi di marketing.
+    **5. Independence Statement**
 
-    5. Base Giuridica del Trattamento (GDPR)
+    NotionWatch is an independent application developed by Francesco Fusca. **We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Notion Labs, Inc. ("Notion") or Cloudinary Ltd. ("Cloudinary").** The use of the names Notion and Cloudinary is purely for identification purposes of the service the app integrates with. The use of Notion and Cloudinary through this app is subject to the respective terms of service and privacy policies of those platforms.
 
-    Se ti trovi nello Spazio Economico Europeo (SEE), il trattamento dei tuoi dati personali si basa sulle seguenti basi giuridiche, ai sensi del Regolamento Generale sulla Protezione dei Dati (GDPR):
+    **6. Legal Basis for Processing (GDPR)**
 
-        *   **Esecuzione di un Contratto:** Il trattamento dei dati è necessario per fornirti il servizio (registrazione e salvataggio delle note audio su Notion), come descritto nei Termini di Servizio [Inserisci un link ai tuoi Termini di Servizio, se li hai].
-        *   **Consenso:** Non raccogliamo dati in base al consenso.
-        *  **Legittimo interesse:** Non raccogliamo dati per legittimo interesse.
+    If you are in the European Economic Area (EEA), the processing of your data is based on **contract performance** (providing the app service as described) and your **implicit consent** by providing the necessary credentials for integration with Notion and Cloudinary.
 
-    6. Conservazione dei Dati
+    **7. Data Retention**
 
-    Conserviamo i tuoi dati personali per il tempo necessario a fornirti il servizio e per le finalità indicate in questa Informativa sulla Privacy:
+    *   **Firebase Account:** Retained until you delete it.
+    *   **Local Credentials (Notion, Cloudinary):** Stored in UserDefaults until you log out, delete your account, or uninstall the app.
+    *   **Data on Third-Party Services (Audio on Cloudinary, Notes on Notion):** Retention depends on the policies and your settings on Cloudinary and Notion.
 
-        *   **Account Firebase:** I dati del tuo account Firebase (email, User ID) vengono conservati finché non elimini il tuo account tramite l'apposita funzione nell'app.
-        *   **Credenziali Notion:** La tua API Key e il tuo Database ID vengono conservati *localmente* sul tuo dispositivo finché non effettui il logout, elimini il tuo account, o disinstalli l'app.
-        *   **Registrazioni Audio:** I file audio vengono conservati su Cloudinary in base alle impostazioni predefinite.
-        * **Descrizioni testuali:** Le descrizioni sono memorizzate su Notion.
+    **8. Your Rights**
 
-    7. I Tuoi Diritti
+    You have the right to access, rectify, and delete your data. You can manage Notion and Cloudinary credentials in the app settings. You can delete your Firebase account from the app. For other rights, contact us.
 
-    Hai i seguenti diritti in relazione ai tuoi dati personali:
+    **9. Data Security**
 
-        *   **Accesso:** Hai il diritto di accedere ai tuoi dati personali e di richiederne una copia.  Puoi accedere alla tua email tramite le impostazioni del tuo account Firebase. Puoi accedere alle tue note audio e descrizioni tramite Notion.  Puoi accedere alla tua API Key e al tuo Database ID tramite le impostazioni dell'app.
-        *   **Rettifica:** Hai il diritto di richiedere la correzione di dati inesatti o incompleti. Puoi modificare la tua email tramite le impostazioni del tuo account Firebase. Puoi modificare la tua API Key e il tuo Database ID tramite le impostazioni dell'app. Puoi modificare le tue note audio e descrizioni tramite Notion.
-        *   **Cancellazione ("Diritto all'Oblio"):** Hai il diritto di richiedere la cancellazione dei tuoi dati personali.  Puoi eliminare il tuo account Firebase tramite l'apposita funzione nell'app.  Questo eliminerà la tua email e il tuo User ID da Firebase.  Puoi eliminare le tue note audio da Cloudinary e Notion.  La tua API Key e il tuo Database ID verranno eliminati dal tuo dispositivo quando elimini il tuo account, effettui il logout o disinstalli l'app.
-        *   **Limitazione del Trattamento:** Hai il diritto di richiedere la limitazione del trattamento dei tuoi dati, in determinate circostanze. Contattaci per richiederlo.
-        *   **Portabilità dei Dati:**  Questo diritto non è pienamente applicabile nel contesto di quest'app, poichè i tuoi dati sono salvati in servizi esterni.
-        *   **Opposizione:** Hai il diritto di opporti al trattamento dei tuoi dati personali, in determinate circostanze. Contattaci per esercitare questo diritto.
-        *   **Revoca del Consenso:** Non raccogliamo dati in base al consenso.
+    We adopt industry-standard security measures, including HTTPS and secure password management through Firebase. The security of your Notion and Cloudinary credentials stored locally also depends on your device's security.
 
-    Per esercitare questi diritti, contattaci all'indirizzo email fornito di seguito.
+    **10. Policy Changes**
 
-    8. Sicurezza dei Dati
+    We may update this policy. We will inform you of significant changes. The updated version will be available in the app.
 
-    Adottiamo misure di sicurezza tecniche e organizzative adeguate per proteggere i tuoi dati personali da accessi non autorizzati, perdite, distruzioni o alterazioni. Queste misure includono:
+    **11. Contact**
 
-        *   Crittografia delle password (gestita da Firebase Authentication).
-        *   Comunicazione sicura tramite HTTPS tra l'app e il server, e tra il server e i servizi terzi (Cloudinary, Notion).
-        *   Memorizzazione locale sicura delle credenziali Notion tramite UserDefaults (che è un meccanismo di memorizzazione sicuro fornito da Apple).
-        *   Accesso limitato ai dati: solo il personale autorizzato ha accesso ai tuoi dati, e solo per le finalità indicate in questa informativa.
-
-    9. Modifiche all'Informativa sulla Privacy
-
-    Ci riserviamo il diritto di modificare questa Informativa sulla Privacy in qualsiasi momento. Ti informeremo di eventuali modifiche sostanziali tramite l'app o via email (se possibile). La versione aggiornata sarà sempre disponibile all'interno dell'app, nella sezione Impostazioni.
-
-    10. Contatti
-
-    Per qualsiasi domanda o richiesta relativa a questa Informativa sulla Privacy o al trattamento dei tuoi dati personali, puoi contattarci all'indirizzo:
-
-    NotionWatch, Francesco Fusca
+    For questions, contact:
+    Francesco Fusca / NotionWatch
     francescofusca9@gmail.com
     """
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Text("Informativa sulla Privacy")
-                    .font(.title)
-                    .padding(.bottom)
-
                 Text(privacyPolicyText)
-                    .font(.body)
+                    .font(.caption) // Riduci un po' la dimensione per watchOS
                     .padding()
 
-                Button("Chiudi") {
+                Button("Close") {
                     presentationMode.wrappedValue.dismiss()
                 }
                 .padding()
             }
+            .navigationTitle("Privacy Policy") // Aggiungi titolo alla NavigationView
         }
     }
 }

@@ -6,42 +6,95 @@ struct NotionCredentialsHelpView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("Come Trovare le Credenziali Notion")
-                    .font(.title)
+            VStack(alignment: .leading, spacing: 25) { // Aumenta spacing
+                Text("Credentials Guide")
+                    .font(.title2).bold() // Riduci titolo
                     .padding(.bottom)
 
-                Text("API Key:")
-                    .font(.headline)
-                Text("1. Vai su notion.so/my-integrations")
-                Text("2. Clicca '+ New Integration'.")
-                Text("3. Dai un nome e seleziona il workspace associato.")
-                Text("4. Clicca 'Submit'.")
-                Text("5. Copia la stringa 'Internal Integration Token', quella è la tua API Key.")
-                Image(systemName: "key") // Aggiungi immagini se possibile (screenshot)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 100)
+                // --- Sezione Notion ---
+                Group {
+                    Text("Notion")
+                        .font(.title3).bold() // Sottotitolo
+                        .padding(.bottom, 5)
 
-                Text("Database ID:")
-                    .font(.headline)
-                Text("1. Apri la pagina o il database Notion che vuoi usare.")
-                Text("2. L'ID del database è la parte dell'URL compresa tra il nome del tuo workspace e il punto interrogativo '?v='.")
-                Text("   Esempio:")
-                Text("   `https://www.notion.so/myworkspace/8fm7fa3925824c7a9510be4i956n8vb9?v=...`")
-                    .font(.footnote)
-                Text("   In questo esempio, l'ID è `8fm7fa3925824c7a9510be4i956n8vb9, mi raccomando ricordati di collegare il database con le tue integrations(API).`")
-                Image(systemName: "doc.on.clipboard") // Aggiungi immagini
-                   .resizable()
-                   .scaledToFit()
-                   .frame(height: 100)
+                    Text("1. API Key (Internal Integration Token):")
+                        .font(.headline)
+                    Text("   a. Go to: notion.so/my-integrations (from computer)")
+                    Text("   b. Click '+ New Integration'.")
+                    Text("   c. Give it a name (e.g. NotionWatch App) and choose Workspace.")
+                    Text("   d. Click 'Submit'.")
+                    Text("   e. On the integration page, go to 'Secrets'.")
+                    Text("   f. Click 'Show' and copy the 'Internal Integration Token'. This is your API Key.")
+                        .foregroundColor(.gray) // Nota aggiuntiva
+                    Image(systemName: "key.fill")
+                        .foregroundColor(.blue)
 
-                Button("Chiudi") {
+                    Text("2. Database ID:")
+                        .font(.headline)
+                        .padding(.top)
+                    Text("   a. Open the Notion database page you want to use with the app.")
+                    Text("   b. Look at the URL in the browser address bar.")
+                    Text("   c. The ID is the long string of letters and numbers between `/` and `?`.")
+                    Text("      Example: `.../myworkspace/`**`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`**`?v=...`")
+                        .font(.caption).foregroundColor(.gray)
+                    Text("   d. Copy this string. This is your Database ID.")
+                    Image(systemName: "doc.text.magnifyingglass")
+                         .foregroundColor(.blue)
+
+                    Text("3. Connect Integration to Database:")
+                        .font(.headline)
+                        .padding(.top)
+                    Text("   a. Go to your Notion database page.")
+                    Text("   b. Click the three dots (...) in the top right.")
+                    Text("   c. Select 'Add connections'.")
+                    Text("   d. Search and select the integration you created (e.g. NotionWatch App).")
+                    Text("   e. Confirm.")
+                        .foregroundColor(.gray)
+                }
+                .padding(.bottom)
+
+                Divider()
+
+                // --- Sezione Cloudinary ---
+                Group {
+                    Text("Cloudinary")
+                        .font(.title3).bold()
+                        .padding(.bottom, 5)
+                    Text("To save audio files, a Cloudinary account is required (offers a generous free plan).")
+                        .font(.footnote).foregroundColor(.gray)
+                        .padding(.bottom, 5)
+
+                    Text("1. Create a Cloudinary Account:")
+                         .font(.headline)
+                    Text("   a. Go to: cloudinary.com")
+                    Text("   b. Sign up for a free account.")
+
+                    Text("2. Find Your Credentials:")
+                        .font(.headline)
+                        .padding(.top)
+                    Text("   a. After logging in, go to your 'Dashboard'.")
+                    Text("   b. You'll find your 'Cloud Name', 'API Key', and 'API Secret' listed in the main section or account settings.")
+                    Text("   c. Copy *exactly* these three values.")
+                    Image(systemName: "cloud.fill")
+                         .foregroundColor(.orange)
+
+                    Text("3. Enter in App:")
+                        .font(.headline)
+                        .padding(.top)
+                    Text("   a. Return to the 'Settings' screen in NotionWatch.")
+                    Text("   b. Paste the 'Cloud Name', 'API Key', and 'API Secret' values in the corresponding fields.")
+                }
+                .padding(.bottom)
+
+                Divider()
+
+                Button("Close") {
                     presentationMode.wrappedValue.dismiss()
                 }
                 .padding(.top)
             }
             .padding()
         }
+        .navigationTitle("Credentials Help")
     }
 }

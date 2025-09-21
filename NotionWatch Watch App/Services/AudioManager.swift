@@ -4,6 +4,7 @@ import AVFoundation
 
 class AudioManager: NSObject, ObservableObject, AVAudioPlayerDelegate, AVAudioRecorderDelegate { // Conforms to protocols
     @Published var isRecording = false
+    @Published var isPaused = false
     @Published var isPlaying = false
     @Published var recordingDuration: TimeInterval = 0
     @Published var currentRecording: AudioRecording?
@@ -55,9 +56,24 @@ class AudioManager: NSObject, ObservableObject, AVAudioPlayerDelegate, AVAudioRe
       func stopRecording() {
           audioRecorder?.stop()
           isRecording = false
+          isPaused = false
           timer?.invalidate()
           timer = nil // Invalidate timer
           audioRecorder = nil
+      }
+
+      func pauseRecording() {
+          guard isRecording && !isPaused else { return }
+          audioRecorder?.pause()
+          isPaused = true
+          timer?.invalidate()
+      }
+
+      func resumeRecording() {
+          guard isRecording && isPaused else { return }
+          audioRecorder?.record()
+          isPaused = false
+          startTimer()
       }
 
       func startPlayback() {
@@ -100,6 +116,7 @@ class AudioManager: NSObject, ObservableObject, AVAudioPlayerDelegate, AVAudioRe
 
     private func resetRecordingState() {
         isRecording = false
+        isPaused = false
         recordingDuration = 0
         currentRecording = nil
         timer?.invalidate()
