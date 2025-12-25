@@ -27,6 +27,8 @@
 
 <img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 09 59" src="https://github.com/user-attachments/assets/9c4a1833-8fff-49f6-9341-0a76912f4aa9" />
 
+<img width="1059" height="494" alt="Screenshot 2025-12-25 alle 14 11 36" src="https://github.com/user-attachments/assets/a35683df-9dd3-40fa-b766-4c145119f8da" />
+
 
 
 
