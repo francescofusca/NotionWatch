@@ -1,0 +1,764 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		842D2A032D77501A00A8D90E /* NotlonWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 842D2A022D77501A00A8D90E /* NotlonWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		846C3A742D7B12820035A5AF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 846C3A732D7B12820035A5AF /* FirebaseAnalytics */; };
+		846C3A762D7B12820035A5AF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 846C3A752D7B12820035A5AF /* FirebaseAuth */; };
+		846C3A782D7B12820035A5AF /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 846C3A772D7B12820035A5AF /* FirebaseCore */; };
+		846C3A7A2D7B12820035A5AF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 846C3A792D7B12820035A5AF /* FirebaseFirestore */; };
+		846C3A7C2D7B12820035A5AF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 846C3A7B2D7B12820035A5AF /* FirebaseStorage */; };
+		846C3A7E2D7B13620035A5AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846C3A7D2D7B13620035A5AF /* GoogleService-Info.plist */; };
+		846C3A7F2D7B13620035A5AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 846C3A7D2D7B13620035A5AF /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		842D2A042D77501A00A8D90E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842D29F62D77501A00A8D90E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842D2A012D77501A00A8D90E;
+			remoteInfo = "NotlonWatch Watch App";
+		};
+		842D2A152D77501B00A8D90E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842D29F62D77501A00A8D90E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842D2A012D77501A00A8D90E;
+			remoteInfo = "NotlonWatch Watch App";
+		};
+		842D2A1F2D77501B00A8D90E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 842D29F62D77501A00A8D90E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 842D2A012D77501A00A8D90E;
+			remoteInfo = "NotlonWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		842D2A2B2D77501B00A8D90E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				842D2A032D77501A00A8D90E /* NotlonWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		842D29FC2D77501A00A8D90E /* NotlonWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotlonWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D2A022D77501A00A8D90E /* NotlonWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NotlonWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D2A142D77501B00A8D90E /* NotlonWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NotlonWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D2A1E2D77501B00A8D90E /* NotlonWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NotlonWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D2A4B2D77E0C800A8D90E /* libmav_ipc_router_dynamic.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libmav_ipc_router_dynamic.tbd; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/usr/lib/libmav_ipc_router_dynamic.tbd; sourceTree = DEVELOPER_DIR; };
+		842D2A4C2D77E0C800A8D90E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		842D2A4D2D77E0C800A8D90E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
+		842D2A4E2D77E0C800A8D90E /* libswiftAVFoundation.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftAVFoundation.tbd; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/usr/lib/swift/libswiftAVFoundation.tbd; sourceTree = DEVELOPER_DIR; };
+		842D2A4F2D77E0C800A8D90E /* AVFAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFAudio.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.2.sdk/System/Library/Frameworks/AVFAudio.framework; sourceTree = DEVELOPER_DIR; };
+		846C3A7D2D7B13620035A5AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		842D2A062D77501A00A8D90E /* NotlonWatch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NotlonWatch Watch App";
+			sourceTree = "<group>";
+		};
+		842D2A172D77501B00A8D90E /* NotlonWatch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NotlonWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		842D2A212D77501B00A8D90E /* NotlonWatch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "NotlonWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		842D29FF2D77501A00A8D90E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846C3A742D7B12820035A5AF /* FirebaseAnalytics in Frameworks */,
+				846C3A7A2D7B12820035A5AF /* FirebaseFirestore in Frameworks */,
+				846C3A782D7B12820035A5AF /* FirebaseCore in Frameworks */,
+				846C3A7C2D7B12820035A5AF /* FirebaseStorage in Frameworks */,
+				846C3A762D7B12820035A5AF /* FirebaseAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A112D77501B00A8D90E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A1B2D77501B00A8D90E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		842D29F52D77501900A8D90E = {
+			isa = PBXGroup;
+			children = (
+				842D2A062D77501A00A8D90E /* NotlonWatch Watch App */,
+				842D2A172D77501B00A8D90E /* NotlonWatch Watch AppTests */,
+				842D2A212D77501B00A8D90E /* NotlonWatch Watch AppUITests */,
+				842D2A4A2D77E0BB00A8D90E /* Frameworks */,
+				842D29FD2D77501A00A8D90E /* Products */,
+				846C3A7D2D7B13620035A5AF /* GoogleService-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		842D29FD2D77501A00A8D90E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				842D29FC2D77501A00A8D90E /* NotlonWatch.app */,
+				842D2A022D77501A00A8D90E /* NotlonWatch Watch App.app */,
+				842D2A142D77501B00A8D90E /* NotlonWatch Watch AppTests.xctest */,
+				842D2A1E2D77501B00A8D90E /* NotlonWatch Watch AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		842D2A4A2D77E0BB00A8D90E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				842D2A4F2D77E0C800A8D90E /* AVFAudio.framework */,
+				842D2A4C2D77E0C800A8D90E /* AVFoundation.framework */,
+				842D2A4D2D77E0C800A8D90E /* AVKit.framework */,
+				842D2A4B2D77E0C800A8D90E /* libmav_ipc_router_dynamic.tbd */,
+				842D2A4E2D77E0C800A8D90E /* libswiftAVFoundation.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		842D29FB2D77501A00A8D90E /* NotlonWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842D2A2C2D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch" */;
+			buildPhases = (
+				842D29FA2D77501A00A8D90E /* Resources */,
+				842D2A2B2D77501B00A8D90E /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842D2A052D77501A00A8D90E /* PBXTargetDependency */,
+			);
+			name = NotlonWatch;
+			packageProductDependencies = (
+			);
+			productName = NotlonWatch;
+			productReference = 842D29FC2D77501A00A8D90E /* NotlonWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		842D2A012D77501A00A8D90E /* NotlonWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842D2A282D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch App" */;
+			buildPhases = (
+				842D29FE2D77501A00A8D90E /* Sources */,
+				842D29FF2D77501A00A8D90E /* Frameworks */,
+				842D2A002D77501A00A8D90E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				842D2A062D77501A00A8D90E /* NotlonWatch Watch App */,
+			);
+			name = "NotlonWatch Watch App";
+			packageProductDependencies = (
+				846C3A732D7B12820035A5AF /* FirebaseAnalytics */,
+				846C3A752D7B12820035A5AF /* FirebaseAuth */,
+				846C3A772D7B12820035A5AF /* FirebaseCore */,
+				846C3A792D7B12820035A5AF /* FirebaseFirestore */,
+				846C3A7B2D7B12820035A5AF /* FirebaseStorage */,
+			);
+			productName = "NotlonWatch Watch App";
+			productReference = 842D2A022D77501A00A8D90E /* NotlonWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		842D2A132D77501B00A8D90E /* NotlonWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842D2A2F2D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch AppTests" */;
+			buildPhases = (
+				842D2A102D77501B00A8D90E /* Sources */,
+				842D2A112D77501B00A8D90E /* Frameworks */,
+				842D2A122D77501B00A8D90E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842D2A162D77501B00A8D90E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				842D2A172D77501B00A8D90E /* NotlonWatch Watch AppTests */,
+			);
+			name = "NotlonWatch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "NotlonWatch Watch AppTests";
+			productReference = 842D2A142D77501B00A8D90E /* NotlonWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		842D2A1D2D77501B00A8D90E /* NotlonWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 842D2A322D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch AppUITests" */;
+			buildPhases = (
+				842D2A1A2D77501B00A8D90E /* Sources */,
+				842D2A1B2D77501B00A8D90E /* Frameworks */,
+				842D2A1C2D77501B00A8D90E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842D2A202D77501B00A8D90E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				842D2A212D77501B00A8D90E /* NotlonWatch Watch AppUITests */,
+			);
+			name = "NotlonWatch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "NotlonWatch Watch AppUITests";
+			productReference = 842D2A1E2D77501B00A8D90E /* NotlonWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		842D29F62D77501A00A8D90E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					842D29FB2D77501A00A8D90E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					842D2A012D77501A00A8D90E = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					842D2A132D77501B00A8D90E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 842D2A012D77501A00A8D90E;
+					};
+					842D2A1D2D77501B00A8D90E = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 842D2A012D77501A00A8D90E;
+					};
+				};
+			};
+			buildConfigurationList = 842D29F92D77501A00A8D90E /* Build configuration list for PBXProject "NotlonWatch" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 842D29F52D77501900A8D90E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 842D29FD2D77501A00A8D90E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				842D29FB2D77501A00A8D90E /* NotlonWatch */,
+				842D2A012D77501A00A8D90E /* NotlonWatch Watch App */,
+				842D2A132D77501B00A8D90E /* NotlonWatch Watch AppTests */,
+				842D2A1D2D77501B00A8D90E /* NotlonWatch Watch AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		842D29FA2D77501A00A8D90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846C3A7F2D7B13620035A5AF /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A002D77501A00A8D90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				846C3A7E2D7B13620035A5AF /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A122D77501B00A8D90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A1C2D77501B00A8D90E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		842D29FE2D77501A00A8D90E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A102D77501B00A8D90E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		842D2A1A2D77501B00A8D90E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		842D2A052D77501A00A8D90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842D2A012D77501A00A8D90E /* NotlonWatch Watch App */;
+			targetProxy = 842D2A042D77501A00A8D90E /* PBXContainerItemProxy */;
+		};
+		842D2A162D77501B00A8D90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842D2A012D77501A00A8D90E /* NotlonWatch Watch App */;
+			targetProxy = 842D2A152D77501B00A8D90E /* PBXContainerItemProxy */;
+		};
+		842D2A202D77501B00A8D90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 842D2A012D77501A00A8D90E /* NotlonWatch Watch App */;
+			targetProxy = 842D2A1F2D77501B00A8D90E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		842D2A262D77501B00A8D90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 92U2L5WS65;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		842D2A272D77501B00A8D90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 92U2L5WS65;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "";
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		842D2A292D77501B00A8D90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NotlonWatch Watch App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NotlonWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = NotlonWatch;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uesta app ha bisogno di accedere al microfono per registrare note audio";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Questa app ha bisogno di accedere al riconoscimento vocale per trascrivere le note audio";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ff9.prova2.NotionWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		842D2A2A2D77501B00A8D90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NotlonWatch Watch App/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NotlonWatch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = NotlonWatch;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "uesta app ha bisogno di accedere al microfono per registrare note audio";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Questa app ha bisogno di accedere al riconoscimento vocale per trascrivere le note audio";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ff9.prova2.NotionWatch.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
+		842D2A2D2D77501B00A8D90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_KEY_CFBundleDisplayName = NotlonWatch;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ff9.prova2.NotionWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		842D2A2E2D77501B00A8D90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_KEY_CFBundleDisplayName = NotlonWatch;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ff9.prova2.NotionWatch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		842D2A302D77501B00A8D90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NotionWatch-Watch-AppTests-Info.plist";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Per convertire la tua voce in testo.";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ff9.prova2.NotlonWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotlonWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NotlonWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		842D2A312D77501B00A8D90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NotionWatch-Watch-AppTests-Info.plist";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Per convertire la tua voce in testo.";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ff9.prova2.NotlonWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotlonWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NotlonWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
+		842D2A332D77501B00A8D90E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ff9.prova2.NotlonWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "NotlonWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Debug;
+		};
+		842D2A342D77501B00A8D90E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ff9.prova2.NotlonWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "NotlonWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		842D29F92D77501A00A8D90E /* Build configuration list for PBXProject "NotlonWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842D2A262D77501B00A8D90E /* Debug */,
+				842D2A272D77501B00A8D90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842D2A282D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842D2A292D77501B00A8D90E /* Debug */,
+				842D2A2A2D77501B00A8D90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842D2A2C2D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842D2A2D2D77501B00A8D90E /* Debug */,
+				842D2A2E2D77501B00A8D90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842D2A2F2D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842D2A302D77501B00A8D90E /* Debug */,
+				842D2A312D77501B00A8D90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		842D2A322D77501B00A8D90E /* Build configuration list for PBXNativeTarget "NotlonWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				842D2A332D77501B00A8D90E /* Debug */,
+				842D2A342D77501B00A8D90E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		846C3A732D7B12820035A5AF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		846C3A752D7B12820035A5AF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		846C3A772D7B12820035A5AF /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		846C3A792D7B12820035A5AF /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		846C3A7B2D7B12820035A5AF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 846C3A722D7B12820035A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 842D29F62D77501A00A8D90E /* Project object */;
+}

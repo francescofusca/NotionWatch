@@ -18,18 +18,19 @@ Packages/
 *~.nib
 *.swp
 
-# Cocoapods (se lo hai usato in passato)
+# Cocoapods
 Pods/
 
-# Carthage (se lo hai usato in passato)
+# Carthage
 Carthage/
 
-# File di configurazione specifici (se ne hai)
-# Es: GoogleService-Info.plist # COMMENTA QUESTA RIGA SE VUOI INCLUDERLO
-                              # MA è MEGLIO NON INCLUDERE FILE CON CHIAVI API
-# Es: .env # MAI INCLUDERE FILE .env CON SEGRETI!
+# Secrets
+GoogleService-Info.plist
+.env
+notion-watch-server/.env
 
-# Altri file temporanei
+# Logs and Temps
 *.log
 *.temp
 *.tmp
+.gemini/

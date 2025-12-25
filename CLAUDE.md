@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-NotionWatch is a watchOS application that records audio notes, transcribes them, and uploads them to Notion databases. The project consists of two main components:
+NotlonWatch is a watchOS application that records audio notes, transcribes them, and uploads them to Notion databases. The project consists of two main components:
 
-1. **watchOS App** (`NotionWatch Watch App/`) - Swift/SwiftUI Apple Watch application
+1. **watchOS App** (`NotlonWatch Watch App/`) - Swift/SwiftUI Apple Watch application
 2. **Node.js Server** (`notion-watch-server/`) - Express.js backend for processing uploads
 
 ## Architecture
@@ -33,7 +33,7 @@ NotionWatch is a watchOS application that records audio notes, transcribes them,
 Build and run the app using Xcode:
 ```bash
 # Open project in Xcode
-open NotionWatch.xcodeproj
+open NotlonWatch.xcodeproj
 ```
 
 ### Backend Server
@@ -54,12 +54,12 @@ The server runs on port 3000 by default (configured in `.env`).
 ### watchOS App Tests
 ```bash
 # Run tests in Xcode using Cmd+U or:
-xcodebuild test -scheme "NotionWatch Watch App" -destination 'platform=iOS Simulator,name=iPhone 15'
+xcodebuild test -scheme "NotlonWatch Watch App" -destination 'platform=iOS Simulator,name=iPhone 15'
 ```
 
 Test files located in:
-- `NotionWatch Watch AppTests/` - Unit tests
-- `NotionWatch Watch AppUITests/` - UI tests
+- `NotlonWatch Watch AppTests/` - Unit tests
+- `NotlonWatch Watch AppUITests/` - UI tests
 
 ### Backend Tests
 Currently no test framework configured. The `package.json` contains placeholder test script.

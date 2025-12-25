@@ -30,7 +30,8 @@ app.post('/upload', upload.single('audio'), async (req, res) => {
     }
 
     // Recupera la descrizione dal body della richiesta
-    const description = req.body.description || "Nota Audio da Watch"; // Usa un valore di default
+    const description = req.body.description || "Nota Audio da NotlonWatch"; // Usa un valore di default
+    const transcription = req.body.transcription; // Trascrizione opzionale
     const apiKey = req.body.apiKey; //Prendo la API KEY Notion
     const databaseId = req.body.databaseId; //Prendo il database ID Notion
     const cloudinaryCloudName = req.body.cloudinaryCloudName; //Prendo Cloudinary Cloud Name
@@ -68,17 +69,27 @@ app.post('/upload', upload.single('audio'), async (req, res) => {
     // Elimino il file temporaneo
     await fs.unlink(req.file.path);
 
+    // Creazione delle proprietà della pagina Notion
+    const properties = {
+      Name: {
+        title: [{ text: { content: description } }], // USA LA DESCRIZIONE!
+      },
+      URL: {
+        url: result.secure_url,
+      },
+    };
+
+    // Aggiungi la trascrizione solo se presente
+    if (transcription && transcription.trim() !== '') {
+      properties.Trascrizione = {
+        rich_text: [{ text: { content: transcription } }],
+      };
+    }
+
     // Creazione della pagina Notion
     const response = await notion.pages.create({
       parent: { database_id: databaseId }, //Uso la variabile
-      properties: {
-        Name: {
-          title: [{ text: { content: description } }], // USA LA DESCRIZIONE!
-        },
-        URL: {
-          url: result.secure_url,
-        },
-      },
+      properties: properties,
     });
 
     console.log('Pagina Notion creata:', response.id);
