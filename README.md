@@ -2,7 +2,9 @@
 
 **NotlonWatch** is an open-source Apple Watch application that allows you to record audio notes, transcribe them (optional), and automatically save them to a Notion database via a secure middleware server. It supports uploading audio files to Cloudinary and linking them directly in your Notion pages.
 
-![Banner](PLACEHOLDER_BANNER_IMAGE_HERE)
+
+<img width="1024" height="1024" alt="ChatGPT Image 25 dic 2025, 14_35_07" src="https://github.com/user-attachments/assets/f63d5989-aa79-438e-9e70-430a6dc59910" />
+
 
 ## 🚀 Features
 
@@ -15,10 +17,20 @@
 
 ## 📱 Screenshots
 
-| Home Screen | Recording | Settings | Notion Result |
-|:---:|:---:|:---:|:---:|
-| ![Home](PLACEHOLDER_HOME_IMAGE) | ![Recording](PLACEHOLDER_RECORDING_IMAGE) | ![Settings](PLACEHOLDER_SETTINGS_IMAGE) | ![Notion](PLACEHOLDER_NOTION_IMAGE) |
+<img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 08 54" src="https://github.com/user-attachments/assets/9b59e895-0da2-468e-b4eb-8fa9aa9f6bac" />
 
+<img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 09 23" src="https://github.com/user-attachments/assets/d31e5ec1-ed0f-4ad1-8e02-3bbabe10422b" />
+
+<img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 09 49" src="https://github.com/user-attachments/assets/24263f94-1a8d-421b-91ce-6c4314d022f8" />
+
+<img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 09 54" src="https://github.com/user-attachments/assets/907c0f87-dd46-42bf-b4ca-0fe6137d73ef" />
+
+<img width="416" height="496" alt="Simulator Screenshot - Apple Watch Series 11 (46mm) - 2025-12-25 at 14 09 59" src="https://github.com/user-attachments/assets/9c4a1833-8fff-49f6-9341-0a76912f4aa9" />
+
+
+
+
+ 
 ## 🛠️ Architecture
 
 The project consists of two parts:
@@ -52,7 +64,7 @@ The watch app cannot talk directly to Notion/Cloudinary securely without exposin
 
 ### 2. Watch App Setup (Frontend)
 
-1.  Open `NotlonWatch.xcodeproj` in Xcode.
+1.  Open `NotionWatch.xcodeproj` in Xcode.
 2.  Navigate to **NotlonWatch Watch App > AppConfig.swift** and ensure your server URL is correct.
 3.  **Firebase Setup (Important):**
     *   This app uses Firebase Auth. You must add your own `GoogleService-Info.plist` to the root of the `NotlonWatch Watch App` folder.
@@ -69,6 +81,16 @@ Once the app is running on your watch:
     *   **Cloudinary Cloud Name, API Key, API Secret**
 3.  Toggle "Enable Transcription" if desired.
 4.  Tap **Save**. The main button will turn **Red**, indicating you are ready to record!
+
+ ## ⚖️ Legal Disclaimer
+**NotlonWatch** is an independent, open-source project and is **not 
+     affiliated with, associated, authorized, endorsed by, or in any way 
+     officially connected with Notion Labs, Inc.**, or any of its subsidiarie
+     or its affiliates. 
+   The official Notion website can be found at [https://www.notion.so](
+     https://www.notion.so). "Notion" as well as related names, marks, emblem
+     and images are registered trademarks of their respective owners. This 
+     application uses the official Notion API but is not a Notion product.
 
 ## 🤝 Contributing
 
